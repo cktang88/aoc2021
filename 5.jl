@@ -18,14 +18,10 @@ function solve()
                 increment(vents, x, y1)
             end
         elseif abs(x1 - x2) == abs(y1 - y2)
-            if (x2 > x1) == (y2 > y1)
-                for n = 0:abs(x1 - x2)
-                    increment(vents, min(x1, x2) + n, min(y1, y2) + n)
-                end
-            else
-                for n = 0:abs(x1 - x2)
-                    increment(vents, min(x1, x2) + n, max(y1, y2) - n)
-                end
+            isincreasing = (x2 > x1) == (y2 > y1)
+            for n = 0:abs(x1 - x2)
+                dy = isincreasing ? min(y1, y2) + n : max(y1, y2) - n
+                increment(vents, min(x1, x2) + n, dy)
             end
         end
 

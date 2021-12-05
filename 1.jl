@@ -1,8 +1,8 @@
 using DelimitedFiles
 
+arr = readdlm("./1.txt")
 
 function solve()
-    arr = readdlm("./1.txt")
     res = 0
     for i = 4:length(arr)
         if arr[i] > arr[i - 3]
@@ -13,5 +13,6 @@ function solve()
 
 end
 
-@time print(solve())
+@time res = solve()
+print(res)
     

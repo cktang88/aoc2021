@@ -1,18 +1,18 @@
 using DelimitedFiles
 
 
+arr = readdlm("./3.txt", String)
 
 function solve()
-    arr = readdlm("./3.txt", String)
-    gamma, epsilon = aggregate_bits(arr)
-    println(parse_bin(gamma) * parse_bin(epsilon))
+    # gamma, epsilon = aggregate_bits(arr)
+    # println(parse_bin(gamma) * parse_bin(epsilon))
 
     # part 2
     bnum = recurse_filter(arr)
     o2 = parse_bin(bnum)
     bnum = recurse_filter(arr, use_gamma=false)
     co2 = parse_bin(bnum)
-    println(o2 * co2)
+    res = o2 * co2
 end
 
 function aggregate_bits(arr)
@@ -46,5 +46,6 @@ function recurse_filter(origArray;use_gamma=true)
     end
 end
 
-@time solve()
+@time res = solve()
+println(res)
     

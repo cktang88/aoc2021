@@ -1,8 +1,8 @@
 using DelimitedFiles
 
+arr = readdlm("./2.txt") # reads into matrix
 
 function solve()
-    arr = readdlm("./2.txt") # reads into matrix
     words, dist = eachcol(arr) # views
     
     horiz, aim, depth = 0, 0, 0
@@ -21,5 +21,6 @@ function solve()
 
 end
 
-@time println(solve())
+@time res = solve()
+print(res)
     
