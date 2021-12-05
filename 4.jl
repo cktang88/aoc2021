@@ -1,7 +1,8 @@
 using DelimitedFiles
 
+arr = readdlm("./4.txt", skipblanks=true)
+
 function solve()
-    arr = readdlm("./4.txt", skipblanks=true)
     pulls = map(x -> parse(Int, x), split(arr[1], ","))
     boards = []
     for i in range(2, size(arr, 1) - 1, step=5)
@@ -10,40 +11,36 @@ function solve()
 
     lastboard = nothing
     for num in pulls
-        for i in 1:length(boards)
-            boards[i] = mark(boards[i], num)
-            # if check(boards[i])
-            #     println("Done: ", sum_remaining(boards[i]) * num)
+        for b in boards
+            mark!(b, num)
+            # if check(b)
+            #     println("Done: ", sum_remaining(b) * num)
             #     return
             # end
         end
 
         # part 2
-        boards = filter(b -> !check(b), boards)
+        # boards = filter(b -> !check(b), boards)
+        deleteat!(boards, findall(b -> check(b), boards))
 
-        if length(boards) == 0
-            println("Done: ", num, " ", sum_remaining(mark(lastboard, num)) * num)
-            break
-        elseif length(boards) == 1
+        if length(boards) == 1
             lastboard = boards[1]
+        elseif isempty(boards)
+            mark!(lastboard, num)
+            println("Done: ", num, " ", sum_remaining(lastboard) * num)
+            break
         end
     end
 end
 
-function sum_remaining(board)
-    return sum(filter(x ->  x > -1, board))
-end
-
-function check(board)
-    function allmarked(arr)
-        return all(map(x -> x == -1, arr))
+@inline sum_remaining(board) = sum(filter(x ->  x > -1, board))
+@inline allmarked(iter) = all(map(x -> x == -1, iter))
+@inline check(board) = any(allmarked(board[i, :]) || allmarked(board[:, i]) for i = 1:5)
+function mark!(board, num::Int)
+    ind = findfirst(e -> e == num, board)
+    if !=(ind, nothing)
+        board[ind] = -1
     end
-    return any(allmarked(board[i, :]) || allmarked(board[:, i]) for i = 1:5)
-end
-
-function mark(board, num::Int)
-    #= mark squares with -1, if pulled =#
-    return [e == num ? -1 : e for e in board]
 end
 
 @time solve()
