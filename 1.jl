@@ -13,5 +13,5 @@ function solve()
 
 end
 
-print(solve())
+@time print(solve())
     

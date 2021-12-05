@@ -46,5 +46,5 @@ function recurse_filter(origArray;use_gamma=true)
     end
 end
 
-solve()
+@time solve()
     
