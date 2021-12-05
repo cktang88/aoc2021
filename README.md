@@ -2,6 +2,14 @@
 
 Done in Julia b/c high perf and very expressive
 
+## Julia things
+
+- everything is 1-indexed
+- slicing is inclusive
+- multidimensional arrays and matrices are different
+- "missing" and "nothing" are different
+- massive standard lib for numerical computation
+
 ## Resources
 
 https://juliabyexample.helpmanual.io/
