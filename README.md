@@ -1,6 +1,7 @@
 # aoc2021
 
-Done in Julia b/c high perf and very expressive
+- Done in Julia b/c high perf and very expressive
+  - problem is you usually have to prioritize one in a given problem lol
 
 ## Julia things
 

@@ -12,7 +12,7 @@ function solve()
     o2 = parse_bin(bnum)
     bnum = recurse_filter(arr, use_gamma=false)
     co2 = parse_bin(bnum)
-    res = o2 * co2
+    return o2 * co2
 end
 
 function aggregate_bits(arr)

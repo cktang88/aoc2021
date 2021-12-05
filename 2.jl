@@ -1,22 +1,20 @@
-using DelimitedFiles
-
-arr = readdlm("./2.txt") # reads into matrix
-
+# readlines has a lot better control than DelimitedFiles.readdlm
+arr = readlines("./2.txt") 
+arr = map(x -> split(x, " "), arr)
 function solve()
-    words, dist = eachcol(arr) # views
-    
     horiz, aim, depth = 0, 0, 0
-    for i = 1:length(words)
-        if words[i] == "down"
-            aim += dist[i]
-        elseif words[i] == "forward"
-            horiz += dist[i]
-            depth += aim * dist[i]
-        elseif words[i] == "up"
-            aim -= dist[i]
+    for row in arr
+        w, d = row[1], parse(Int, row[2])
+        if w == "down"
+            aim += d
+        elseif w == "forward"
+            horiz += d
+            depth += aim * d
+        elseif w == "up"
+            aim -= d
         end
     end
-    
+
     return horiz * depth
 
 end
