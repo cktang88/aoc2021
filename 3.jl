@@ -1,7 +1,4 @@
-using DelimitedFiles
-
-
-arr = readdlm("./3.txt", String)
+arr = readlines("./3.txt")
 
 function solve()
     # gamma, epsilon = aggregate_bits(arr)
@@ -17,14 +14,11 @@ end
 
 function aggregate_bits(arr)
     gamma, epsilon = "", ""
-    numcols = length(arr[1])
-    for j in 1:numcols
-        col = map(x -> x[j], arr)
-        numrows = length(col)
-        cnt = count(x -> x == '1', col)
-
-        gamma *= cnt >= numrows / 2 ? "1" : "0"
-        epsilon *= cnt < numrows / 2 ? "1" : "0"
+    numrows = length(arr)
+    for j = eachindex(arr[1])
+        ones = count(x -> x[j] == '1', arr)
+        gamma *= ones >= numrows / 2 ? "1" : "0"
+        epsilon *= ones < numrows / 2 ? "1" : "0"
     end
     return gamma, epsilon
 end
@@ -33,9 +27,8 @@ function parse_bin(n::String)
     return parse(Int, n, base=2)
 end
 
-function recurse_filter(origArray;use_gamma=true)
-    arr = copy(origArray)
-    for j in 1:length(arr[1])
+function recurse_filter(arr;use_gamma=true)
+    for j = eachindex(arr[1])
         gamma, epsilon = aggregate_bits(arr)
         arr = filter(x -> x[j] == (use_gamma ? gamma[j] : epsilon[j]), arr)
         if length(arr) == 1
