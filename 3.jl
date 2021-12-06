@@ -2,7 +2,7 @@ arr = readlines("./3.txt")
 
 function solve()
     # gamma, epsilon = aggregate_bits(arr)
-    # println(parse_bin(gamma) * parse_bin(epsilon))
+    # return parse_bin(gamma) * parse_bin(epsilon)
 
     # part 2
     bnum = recurse_filter(arr)
