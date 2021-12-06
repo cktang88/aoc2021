@@ -9,7 +9,8 @@
 - slicing is inclusive
 - multidimensional arrays and matrices are different
 - "missing" and "nothing" are different
-- massive standard lib for numerical computation
+- massive standard lib for numerical/linalg stuff
+- lots of macros (@simd, @time, @inline, @noinline)
 
 ## Resources
 
