@@ -1,7 +1,5 @@
-# readlines has a lot better control than DelimitedFiles.readdlm
-arr = readlines("./2.txt") 
-arr = map(x -> split(x, " "), arr)
 function solve()
+    arr = map(x -> split(x, " "), readlines("./2.txt"))
     horiz, aim, depth = 0, 0, 0
     for row in arr
         w, d = row[1], parse(Int, row[2])
@@ -20,5 +18,5 @@ function solve()
 end
 
 @time res = solve()
-print(res)
+println(res)
     

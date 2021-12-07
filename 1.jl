@@ -1,5 +1,3 @@
-
-
 function solve()
     arr = map(x -> parse(Int, x), readlines("./1.txt"))
     res = 0
@@ -9,9 +7,8 @@ function solve()
         end
     end
     return res
-
 end
 
 @time res = solve()
-print(res)
+println(res)
     

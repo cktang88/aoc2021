@@ -11,5 +11,5 @@ function solve()
     return sum(fish)
 end
 @time res = solve()
-print(res)
+println(res)
 

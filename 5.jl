@@ -25,9 +25,9 @@ function solve()
 
         # display(vents)
     end
-    println(count(v -> v > 1, vents))
-
+    return count(v -> v > 1, vents)
 end
 
 @inline increment(arr, x, y) = arr[x, y] += 1
-@time solve()
+@time res = solve()
+println(res)

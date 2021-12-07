@@ -27,7 +27,7 @@ function solve()
             lastboard = boards[1]
         elseif isempty(boards)
             mark!(lastboard, num)
-            println("Done: ", num, " ", sum_remaining(lastboard) * num)
+            return num, sum_remaining(lastboard) * num
             break
         end
     end
@@ -43,4 +43,5 @@ function mark!(board, num::Int)
     end
 end
 
-@time solve()
+@time res = solve()
+println(res)
