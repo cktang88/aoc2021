@@ -1,14 +1,12 @@
-using DelimitedFiles
-arr = readdlm("./5.txt", ) # reads into matrix
-
 function solve()
-    pairs = map(x -> split(x, ","), arr)
+    arr = readlines("./5.txt")
+    pairs = map(x -> map(w -> split(w, ","), split(x, " -> ")), arr)
     
     vents = zeros(Int8, 1000, 1000)
     for i = 1:size(pairs, 1)
         # convert nums to 1-indexed lol
-        x1, y1 = map(x -> parse(Int, x) + 1, pairs[i, 1])
-        x2, y2 = map(x -> parse(Int, x) + 1, pairs[i, 3])
+        x1, y1 = map(x -> parse(Int, x) + 1, pairs[i][1])
+        x2, y2 = map(x -> parse(Int, x) + 1, pairs[i][2])
         if x1 == x2
             for y = min(y1, y2):max(y1, y2)
                 increment(vents, x1, y)

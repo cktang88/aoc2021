@@ -1,5 +1,5 @@
-arr = map(e -> parse(Int, e), split(readlines("./6.txt")[1], ","))
 function solve()
+    arr = map(e -> parse(Int, e), split(readlines("./6.txt")[1], ","))
     fish = repeat([0], 9)
     for i in arr
         fish[i + 1] += 1 # julia's 1-indexed rip
