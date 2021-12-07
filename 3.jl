@@ -1,6 +1,6 @@
-arr = readlines("./3.txt")
 
 function solve()
+    arr = readlines("./3.txt")
     # gamma, epsilon = aggregate_bits(arr)
     # return parse_bin(gamma) * parse_bin(epsilon)
 
