@@ -14,7 +14,12 @@ function solve()
         d[four] = 4
         d[seven] = 7
         d[eight] = 8
-        println(filter(c -> !contains(seven, c), one))
+        println(filter(c -> !contains(seven, c), one)) # top segment
+        println(filter(c -> !contains(four, c), seven))
+        println(filter(c -> !contains(eight, c), six)) # upper right
+        println(filter(c -> !contains(zero, c), eight)) # mid
+        println(filter(c -> !contains(six, c), two)) # bottom right
+        println(filter(c -> !contains(five, c), six)) # bottom left
         # println()
         # res += count(e -> length(e) == 2 || length(e) == 3 || length(e) == 4 || length(e) == 7, split(a[2], " "))
     end
