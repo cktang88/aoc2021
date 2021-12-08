@@ -1,4 +1,3 @@
-using DelimitedFiles
 function solve()
     arr = map(e -> parse(Int, e), split(readlines("./7.txt")[1], ","))
     # guess = floor(sum(arr) / length(arr))
