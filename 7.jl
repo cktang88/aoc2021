@@ -7,5 +7,5 @@ function solve()
 end
 @inline cost(arr, i)::Int = sum(x -> abs(x - i) * (abs(x - i) + 1) // 2, arr)
 @time res = solve()
-print(res)
+println(res)
 

@@ -29,7 +29,7 @@ function solve()
     return res
 end
 @time res = solve()
-print(res)
+println(res)
 
 
 
