@@ -44,7 +44,6 @@ function complete(row, starts, stops)
         end
     end
     res = []
-    c = missing
     while length(cur) > 0
         push!(res, get(stops, pop!(cur), missing))
     end
